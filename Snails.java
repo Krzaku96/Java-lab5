@@ -1,17 +1,18 @@
 public class Snails implements Runnable{
 
     Thread s;
+    Lawn[] lawn;
 
-    Snails() {
+    Snails(Lawn[] lawn) {
         s = new Thread(this);
+        this.lawn = lawn;
         System.out.println("Slimak: " + s);
-        s.start();
     }
 
     public void run()
     {
         try {
-            for(int i=10; i>0; i--)
+            for(int i=0; i<5; i++)
             {
                 System.out.println("Slimak: " + i);
                 Thread.sleep(500);

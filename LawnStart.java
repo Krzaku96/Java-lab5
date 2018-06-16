@@ -1,20 +1,31 @@
 
+class Lawn {
+    int tmp;
 
-public class Lawn implements Runnable{
+    Lawn()
+    {
+        tmp=0;
+    }
+}
+
+
+public class LawnStart implements Runnable{
 
     Thread l;
+    Lawn[] lawn;
 
-    Lawn() {
+    LawnStart(Lawn[] lawn) {
         l = new Thread(this);
+        this.lawn = lawn;
         System.out.println("Trawnik: " + l);
-        l.start();
     }
 
     public void run()
     {
         try {
-            for(int i=10; i>0; i--)
+            for(int i=0; i<5; i++)
             {
+                lawn[i] = new Lawn();
                 System.out.println("Trawnik: " + i);
                 Thread.sleep(1000);
             }

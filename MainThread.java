@@ -4,16 +4,25 @@
 public class MainThread {
 
     public static void main(String[] args) {
-        new Lawn();
-        new Snails();
 
+        Lawn[] lawn = new Lawn[5];
+        Thread startlawn = new Thread(new LawnStart(lawn));
+        Thread snail = new Thread(new Snails(lawn));
+
+        startlawn.start();
         try {
-            Thread.sleep(20000);
-
+            startlawn.join();
         } catch (InterruptedException e) {
             System.out.println("Przerwane wykonywanie programu");
         }
-        System.out.println("Koniec programu");
+
+        snail.start();
+
+        try {
+            Thread.sleep(400);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
 
