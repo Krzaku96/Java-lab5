@@ -1,27 +1,49 @@
+import java.util.Random;
+
 public class Snails implements Runnable{
 
     Thread s;
     Lawn[] lawn;
-
-    Snails(Lawn[] lawn) {
+    Random rnd = new Random();
+    
+    Snails(string name, Lawn[] lawn) {
         s = new Thread(this);
         this.lawn = lawn;
-        System.out.println("Slimak: " + s);
+        s = new Thread(name);
+        s.start();
+        System.out.println("Slimak: " + s.getName());
     }
 
+    @Override
     public void run()
     {
-        try {
-            for(int i=0; i<5; i++)
-            {
-                System.out.println("Slimak: " + i);
-                Thread.sleep(500);
-            }
-        }catch (InterruptedException e)
-        {
-            System.out.println("Tworzenie slimakow zostało przerwane");
-        }
-        System.out.println("Koniec tworzenia slimakow");
+
+        if (s.getName().contains("snail"))
+            eat(lawn);
+        if (s.getName().contains("create"))
+            create(lawn);
+    
     }
+    
+    void eat(Lawn[] lawn) {
+        while (true) {
+            int i = rnd.nextInt(5);
+
+            synchronized (lawn[i]) {
+                lawn[i].fall();
+            }
+        }
+    }
+
+    void create(Lawn[] lawn) {
+        while (true) {
+            int i = rnd.nextInt(5);
+
+            synchronized (lawn[i]) {
+                lawn[i].grow();
+            }
+        }
+    }
+
 
 }
