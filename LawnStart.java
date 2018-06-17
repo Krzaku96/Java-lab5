@@ -22,13 +22,14 @@ public class LawnStart implements Runnable{
 
     public void run()
     {
-        try {
-            for(int i=0; i<5; i++)
-            {
-                lawn[i] = new Lawn();
-                System.out.println("Trawnik: " + i);
-                Thread.sleep(1000);
-            }
+    	for(int i=0; i<5; i++) {
+    		for(int j=0; j<5; j++) {
+        		lawn[i] = new Lawn();	
+    		}
+    	}      
+    	
+    	try {
+        	Thread.sleep(1000);
         }catch (InterruptedException e)
         {
             System.out.println("Tworzenie trawnika zostało przerwane");
