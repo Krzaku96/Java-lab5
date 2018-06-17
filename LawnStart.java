@@ -11,7 +11,7 @@ class Lawn {
         while (h != 5) {
             h++;
             try {
-                Thread.sleep(500);
+                Thread.sleep(1500);
             } catch (Exception ex) {
             	System.out.println("Maksymalna wielkosc trawnika");
             }
@@ -22,14 +22,17 @@ class Lawn {
         while (h != 0) {
             h--;
             try {
-                Thread.sleep(200);
+                Thread.sleep(1500);
             } catch (Exception ex) {
             	System.out.println("Nie mozna zjesc trawnika!");
             }
         }
     }
 
-
+    @Override
+    public String toString() {
+        return String.valueOf(h);
+    }
 }
 
 
@@ -49,8 +52,7 @@ public class LawnStart implements Runnable{
     	
     	try {
         	for(int i=0; i<5; i++) {
-            		lawn[i]= new Lawn();	
-        		}
+           		lawn[i]= new Lawn();	 
         	}      
     		Thread.sleep(1000);
         }catch (InterruptedException e)
@@ -59,7 +61,8 @@ public class LawnStart implements Runnable{
         }
         System.out.println("Koniec tworzenia trawnika");
     }
-
+    
+    
 
 
 }

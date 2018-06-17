@@ -6,7 +6,7 @@ public class Snails implements Runnable{
     Lawn[] lawn;
     Random rnd = new Random();
     
-    Snails(string name, Lawn[] lawn) {
+    Snails(String name, Lawn[] lawn) {
         s = new Thread(this);
         this.lawn = lawn;
         s = new Thread(name);
