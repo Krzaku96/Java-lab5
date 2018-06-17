@@ -9,6 +9,7 @@ public class MainThread {
         Thread startlawn = new Thread(new LawnStart(lawn));
         Thread snail = new Thread(new Snails("snail1",lawn));
         Thread create = new Thread(new Snails("create1", lawn));
+        Thread snail2 = new Thread(new Snails("snail2",lawn));
         
         startlawn.start();
         
@@ -17,18 +18,14 @@ public class MainThread {
         } catch (InterruptedException e) {
             System.out.println("Przerwane tworzenie trawnika");
         }
-        create.start();
-        snail.start();
-
-        try {
-            Thread.sleep(400);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         
+        create.start();
+        
+        snail.start();
+        snail2.start();
         while (true) {
             for (int i = 0; i<5; i++) {
-                    System.out.print(lawn[i] + "\t");
+            	System.out.print(lawn[i] + "\t");
             }
             System.out.println("\n");
             try {
@@ -37,6 +34,7 @@ public class MainThread {
                 ex.printStackTrace();
             }
         }
+        
         
     }
 }

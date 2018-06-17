@@ -28,9 +28,8 @@ public class Snails implements Runnable{
     void eat(Lawn[] lawn) {
         while (true) {
             int i = rnd.nextInt(5);
-
             synchronized (lawn[i]) {
-                lawn[i].fall();
+            	lawn[i].fall();
             }
         }
     }

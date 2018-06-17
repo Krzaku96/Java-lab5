@@ -4,7 +4,7 @@ class Lawn {
 
     Lawn()
     {
-        h=0;
+        h=5;
     }
     
     void grow() {
@@ -44,7 +44,7 @@ public class LawnStart implements Runnable{
     LawnStart(Lawn[] lawn) {
         l = new Thread(this);
         this.lawn = lawn;
-        System.out.println("Trawnik: " + l);
+        System.out.println("Trawnik: " + l.getName());
     }
 
     public void run()
